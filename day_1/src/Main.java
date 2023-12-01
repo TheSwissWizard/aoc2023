@@ -20,10 +20,9 @@ public class Main {
 
         BufferedReader br = new BufferedReader(new FileReader("input.txt."));
 
-        int value = 0;
+        List<String> values = new ArrayList<>();
 
-        for(String line : br.lines().toList()) {
-            System.out.println(line);
+        for (String line : br.lines().toList()) {
 
             int index = Integer.MAX_VALUE;
             while (index == Integer.MAX_VALUE) {
@@ -42,24 +41,13 @@ public class Main {
                 }
             }
 
-            System.out.println(line);
 
-            int first = -1;
-            int last = -1;
+            List<String> list = Arrays.stream(line.split(""))
+                    .filter(c -> Character.isDigit(c.charAt(0)))
+                    .toList();
 
-            for (String s : line.split("")) {
-                if (Character.isDigit(s.charAt(0))) {
-                    if (first == -1) {
-                        first = Integer.parseInt(s);
-                    }
-                    last = Integer.parseInt(s);
-                }
-            }
-            first  *= 10;
-            value += first + last;
-
-            System.out.println(first + last);
+            values.add(list.get(0) + list.get(list.size() - 1));
         }
-        System.out.println("Sum: " + value);
+        System.out.println("Sum: " + values.stream().mapToInt(Integer::parseInt).sum());
     }
 }
