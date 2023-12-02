@@ -18,7 +18,7 @@ public class Main {
         numbers.put("eight", "8t");
         numbers.put("nine", "9e");
 
-        BufferedReader br = new BufferedReader(new FileReader("input.txt."));
+        BufferedReader br = new BufferedReader(new FileReader("../../input/day_1.txt."));
 
         List<String> values = new ArrayList<>();
 
